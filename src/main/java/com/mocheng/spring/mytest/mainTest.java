@@ -1,6 +1,7 @@
 package com.mocheng.spring.mytest;
 
 import com.mocheng.spring.Bean.User;
+import com.mocheng.spring.beanScan;
 import com.mocheng.spring.config.myConfig;
 import org.junit.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -16,9 +17,23 @@ public class mainTest {
 
     @Test
     public void test(){
+        //Configuration +bean方式注入
         AnnotationConfigApplicationContext contest = new AnnotationConfigApplicationContext(myConfig.class);
-        User user = (User) contest.getBean("User");
+        User user = (User) contest.getBean("myUser");
+        String[] beanDefinitionNames = contest.getBeanDefinitionNames();
+        for (String name: beanDefinitionNames) {
+            System.out.println(name);
 
-        System.out.println(user.getName());
+        }
+    }
+
+    @Test
+    public void test02(){
+        //使用注解方式
+        AnnotationConfigApplicationContext contest = new AnnotationConfigApplicationContext(beanScan.class);
+        String[] beanDefinitionNames = contest.getBeanDefinitionNames();
+        for (String name: beanDefinitionNames) {
+            System.out.println(name);
+        }
     }
 }

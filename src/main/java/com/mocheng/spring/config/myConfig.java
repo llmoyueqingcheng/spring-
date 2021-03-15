@@ -11,7 +11,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class myConfig {
 
-    @Bean
+//    @Bean
+//    public DateSource DateSource(){
+//        return new DateSource;
+//    }
+
+    @Bean("myUser")
     public User User(){
         return new User("lisi","33");
     }
